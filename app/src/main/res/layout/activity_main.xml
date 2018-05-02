@@ -1,15 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:orientation="vertical"
     android:background="@drawable/main"
     tools:context="com.example.cj.videoeditor.activity.MainActivity">
 
@@ -17,22 +12,37 @@
         android:id="@+id/record_activity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="50dp"
-        android:text="@string/record" />
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="90dp"
+        android:layout_marginEnd="50dp"
+        android:background="#9B30FF"
+        android:alpha="0.7"
+        android:text="录制"
+        android:textColor="#ffffff"
+        android:textSize="60px"  />
     <Button
         android:id="@+id/select_activity"
-        android:text="@string/local_video_beauty"
-        android:layout_marginTop="20dp"
-        android:layout_gravity="center_horizontal"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/record_activity"
+        android:layout_alignBottom="@+id/record_activity"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="59dp"
+        android:background="#9B30FF"
+        android:alpha="0.7"
+        android:text="美颜"
+        android:textColor="#ffffff"
+        android:textSize="60px" />
     <Button
         android:id="@+id/audio_activity"
-        android:text="@string/audio_editor"
-        android:layout_marginTop="20dp"
-        android:layout_gravity="center_horizontal"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:textColor="#ffffff"
+        android:background="#9B30FF"
+        android:textSize="50px"
+        android:text="音频处理"
+        android:visibility="gone"/>
 
-</LinearLayout>
+</RelativeLayout>
