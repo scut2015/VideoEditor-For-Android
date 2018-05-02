@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--点击音频处理之后的界面，直接隐藏 -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/main">
+    android:background="@drawable/main"
+    android:visibility="gone">
 
     <Button
         android:id="@+id/video_select"

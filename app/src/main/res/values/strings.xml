@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">VideoEditor</string>
+    <string name="app_name">B-ling</string>
     <string name="video">视频</string>
     <string name="record">录制</string>
     <string name="local_video_beauty">本地视频美颜</string>
