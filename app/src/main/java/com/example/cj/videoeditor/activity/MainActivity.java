@@ -20,13 +20,14 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         Button selectBtn = (Button) findViewById(R.id.select_activity);
         Button audioBtn = (Button) findViewById(R.id.audio_activity);
         recordBtn.setOnClickListener(this);
+        recordBtn.getBackground().setAlpha(80);
         selectBtn.setOnClickListener(this);
+        selectBtn.getBackground().setAlpha(80);
         audioBtn.setOnClickListener(this);
-// 将字体文件保存在assets/fonts/目录下，在程序中通过如下方式实例化自定义字体：
+        audioBtn.getBackground().setAlpha(80);
         Typeface typeFace = Typeface.createFromAsset(getAssets(),"fonts/Pacifico-Regular.ttf");
-// 应用字体
-      TextView txtshow=(TextView) findViewById(R.id.show);
-      txtshow.setTypeface(typeFace);
+        TextView txtshow=(TextView) findViewById(R.id.show);
+        txtshow.setTypeface(typeFace);
     }
 
     @Override
