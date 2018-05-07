@@ -5,9 +5,12 @@ import com.example.cj.videoeditor.fileserversdk.data.FileDTO;
 import com.example.cj.videoeditor.fileserversdk.data.ResultDO;
 import com.example.cj.videoeditor.fileserversdk.setting.Setting;
 import com.example.cj.videoeditor.fileserversdk.setting.Util;
+<<<<<<< HEAD
 
 import junit.framework.Assert;
 
+=======
+>>>>>>> kelles
 import okhttp3.Response;
 
 import java.io.IOException;
@@ -23,7 +26,7 @@ public class FileServerSDKTest {
     String testContent = "Congratulations, you passed the test!";
 
     public boolean runTest() throws IOException {
-        return test1_Insert() && test2_Get() && test3_Update() && test4_Remove();
+        return (test1_Insert() && test2_Get() && test3_Update() && test4_Remove());
     }
 
     public boolean test1_Insert() throws IOException {
@@ -48,12 +51,20 @@ public class FileServerSDKTest {
         InputStream inputStream = null;
         try {
             ResultDO<FileDTO> resultDO = fileServerSDK.get(testId, testAccessCode);
+<<<<<<< HEAD
             Assert.assertTrue(resultDO.getSuccess() && resultDO.getData() != null && resultDO.getData().getInputStream() != null);
+=======
+            if (!(resultDO.getSuccess() && resultDO.getData() != null && resultDO.getData().getInputStream() != null)) return false;
+>>>>>>> kelles
             FileDTO fileDTO = resultDO.getData();
             inputStream = fileDTO.getInputStream();
             byte[] bytes = Util.inputStreamToBytes(fileDTO.getInputStream());
             String responseContent = new String(bytes, Setting.DEFAULT_CHARSET);
+<<<<<<< HEAD
             return(testContent.equals(responseContent) && testFileName.equals(fileDTO.getFile_name()));
+=======
+            return (testContent.equals(responseContent) && testFileName.equals(fileDTO.getFile_name()));
+>>>>>>> kelles
         } finally {
             if (inputStream != null) {
                 inputStream.close();
@@ -68,9 +79,15 @@ public class FileServerSDKTest {
         try {
             resultUpdate = fileServerSDK.update(testId, testAccessCode,
                     null, "hucci.txt", Util.bytesToInputStream("Hello, Hucci!".getBytes(Setting.DEFAULT_CHARSET)));
+<<<<<<< HEAD
             Assert.assertTrue(resultUpdate != null && resultUpdate.getSuccess());
             resultGet = fileServerSDK.get(testId, testAccessCode);
             Assert.assertTrue(resultGet != null && resultGet.getSuccess() && resultGet.getData() != null);
+=======
+            if (!(resultUpdate != null && resultUpdate.getSuccess())) return false;
+            resultGet = fileServerSDK.get(testId, testAccessCode);
+            if (!(resultGet != null && resultGet.getSuccess() && resultGet.getData() != null)) return false;
+>>>>>>> kelles
             FileDTO fileDTO=resultGet.getData();
             return ("Hello, Hucci!".equals(new String(Util.inputStreamToBytes(fileDTO.getInputStream()),Setting.DEFAULT_CHARSET)));
         } finally {
