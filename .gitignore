@@ -10,6 +10,7 @@
 /captures
 .externalNativeBuild
 
+<<<<<<< HEAD
 # Created by https://www.gitignore.io/api/intellij
 
 ### Intellij ###
@@ -63,3 +64,42 @@ fabric.properties
 
 # *.iml
 # modules.xml
+=======
+#Recommended:
+#built application files
+*.apk
+*.ap_
+
+# files for the dex VM
+*.dex
+
+# Java class files
+*.class
+
+# generated files
+bin/
+gen/
+
+# Local configuration file (sdk path, etc)
+local.properties
+
+# Windows thumbnail db
+Thumbs.db
+
+# OSX files
+.DS_Store
+
+# Android Studio
+*.iml
+.idea
+#.idea/workspace.xml - remove # and delete .idea if it better suit your needs.
+.gradle
+build/
+.navigation
+captures/
+output.json 
+
+#NDK
+obj/
+.externalNativeBuild
+>>>>>>> 79273258794782ff90d7371e9b17028b011b5561
