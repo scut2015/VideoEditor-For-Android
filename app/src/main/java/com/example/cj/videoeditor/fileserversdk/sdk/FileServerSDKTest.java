@@ -87,5 +87,5 @@ public class FileServerSDKTest {
         ResultDO resultDO=fileServerSDK.remove(testId,testAccessCode);
         return(resultDO.getSuccess());
     }
-    
+
 }
