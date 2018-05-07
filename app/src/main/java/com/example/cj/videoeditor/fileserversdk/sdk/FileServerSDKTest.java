@@ -22,15 +22,11 @@ public class FileServerSDKTest {
     String testFileName = "congratulations.txt";
     String testContent = "Congratulations, you passed the test!";
 
-    public static void main(String[] args) throws IOException {
-        FileServerSDKTest test=new FileServerSDKTest();
-        test.test1_Insert();
-        test.test2_Get();
-        test.test3_Update();
-        test.test4_Remove();
+    public boolean runTest() throws IOException {
+        return test1_Insert() && test2_Get() && test3_Update() && test4_Remove();
     }
 
-    public void test1_Insert() throws IOException {
+    public boolean test1_Insert() throws IOException {
         InputStream inputStream = null;
         ResultDO<Response> resultDO = null;
         try {
@@ -40,7 +36,7 @@ public class FileServerSDKTest {
             fileDTO.setFile_name(testFileName);
             fileDTO.setInputStream(Util.bytesToInputStream(testContent.getBytes(Setting.DEFAULT_CHARSET)));
             resultDO = fileServerSDK.insert(fileDTO);
-            Assert.assertTrue(resultDO.getSuccess() || resultDO.getCode() == Setting.STATUS_FILE_ALREADY_EXISTS);
+            return (resultDO.getSuccess() || resultDO.getCode() == Setting.STATUS_FILE_ALREADY_EXISTS);
         } finally {
             if (inputStream != null) {
                 inputStream.close();
@@ -48,7 +44,7 @@ public class FileServerSDKTest {
         }
     }
 
-    public void test2_Get() throws IOException {
+    public boolean test2_Get() throws IOException {
         InputStream inputStream = null;
         try {
             ResultDO<FileDTO> resultDO = fileServerSDK.get(testId, testAccessCode);
@@ -57,7 +53,7 @@ public class FileServerSDKTest {
             inputStream = fileDTO.getInputStream();
             byte[] bytes = Util.inputStreamToBytes(fileDTO.getInputStream());
             String responseContent = new String(bytes, Setting.DEFAULT_CHARSET);
-            Assert.assertTrue(testContent.equals(responseContent) && testFileName.equals(fileDTO.getFile_name()));
+            return(testContent.equals(responseContent) && testFileName.equals(fileDTO.getFile_name()));
         } finally {
             if (inputStream != null) {
                 inputStream.close();
@@ -65,7 +61,7 @@ public class FileServerSDKTest {
         }
     }
 
-    public void test3_Update() throws IOException {
+    public boolean test3_Update() throws IOException {
         InputStream isUpdate=null, isGet = null;
         ResultDO<Response> resultUpdate = null;
         ResultDO<FileDTO> resultGet = null;
@@ -76,7 +72,7 @@ public class FileServerSDKTest {
             resultGet = fileServerSDK.get(testId, testAccessCode);
             Assert.assertTrue(resultGet != null && resultGet.getSuccess() && resultGet.getData() != null);
             FileDTO fileDTO=resultGet.getData();
-            Assert.assertEquals("Hello, Hucci!",new String(Util.inputStreamToBytes(fileDTO.getInputStream()),Setting.DEFAULT_CHARSET));
+            return ("Hello, Hucci!".equals(new String(Util.inputStreamToBytes(fileDTO.getInputStream()),Setting.DEFAULT_CHARSET)));
         } finally {
             if (isUpdate != null) {
                 isUpdate.close();
@@ -87,12 +83,9 @@ public class FileServerSDKTest {
         }
     }
 
-    public void test4_Remove(){
+    public boolean test4_Remove(){
         ResultDO resultDO=fileServerSDK.remove(testId,testAccessCode);
-        Assert.assertTrue(resultDO.getSuccess());
+        return(resultDO.getSuccess());
     }
-
-    public void testDraft() throws InvocationTargetException, IllegalAccessException {
-    }
-
+    
 }
