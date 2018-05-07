@@ -48,6 +48,7 @@ public class PreviewActivity extends BaseActivity implements View.OnClickListene
     static final int VIDEO_UPDATE = 2;
     static final int VIDEO_PAUSE = 3;
     static final int VIDEO_CUT_FINISH = 4;
+
     Handler mHandler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
@@ -176,7 +177,11 @@ public class PreviewActivity extends BaseActivity implements View.OnClickListene
                     clipper.showBeauty();
                 }
                 clipper.setInputVideoPath(mPath);
-                outputPath = Constants.getPath("video/clip/", System.currentTimeMillis() + "");
+                outputPath = Constants.getPath("video/clip/", System.currentTimeMillis() + ".mp4");
+                //outputPath = Constants.getPath("video/clip/",  "test1"+ ".mp4");
+                //Toast.makeText(PreviewActivity.this,"路径为---"+outputPath,Toast.LENGTH_SHORT).show();
+                Constants.get_stream();//input_stream
+                //Toast.makeText(PreviewActivity.this,"filepath为---"+Constants.file_path,Toast.LENGTH_SHORT).show();
                 clipper.setFilterType(filterType);
                 clipper.setOutputVideoPath(outputPath);
                 clipper.setOnVideoCutFinishListener(new VideoClipper.OnVideoCutFinishListener() {
