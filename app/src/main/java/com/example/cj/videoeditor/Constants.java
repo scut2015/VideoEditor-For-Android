@@ -21,7 +21,7 @@ import static com.example.cj.videoeditor.widget.FocusImageView.TAG;
 
 public class Constants {
     public static InputStream mInputStream;
-    public static String fileName;
+    public static String mfileName;
 
     public static String getBaseFolder() {
         String baseFolder = Environment.getExternalStorageDirectory() + "/Codec/";
@@ -42,15 +42,9 @@ public class Constants {
         if (!f.exists() && !f.mkdirs()) {
             return getBaseFolder() + fileName;
         }
-        try {
-            fileInputStream = new FileInputStream(p+fileName);
-            mInputStream = fileInputStream;
-            Log.d(TAG, "getPath: finish inputstream");
+        mfileName = p+fileName;
 
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-        fileName = p+fileName;
+
         return p + fileName;
     }
 }

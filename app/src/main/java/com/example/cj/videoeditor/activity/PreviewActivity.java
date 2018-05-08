@@ -176,7 +176,7 @@ public class PreviewActivity extends BaseActivity implements View.OnClickListene
                 }
                 clipper.setInputVideoPath(mPath);
                 outputPath = Constants.getPath("video/clip/", System.currentTimeMillis() + ".mp4");
-                //Toast.makeText(PreviewActivity.this,"视频路径为"+outputPath,Toast.LENGTH_SHORT).show();
+                Toast.makeText(PreviewActivity.this,"视频路径为"+outputPath,Toast.LENGTH_SHORT).show();
                 clipper.setFilterType(filterType);
                 clipper.setOutputVideoPath(outputPath);
                 clipper.setOnVideoCutFinishListener(new VideoClipper.OnVideoCutFinishListener() {
