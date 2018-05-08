@@ -57,6 +57,7 @@ public class ShareActivity extends BaseActivity implements View.OnClickListener 
      * @return
      */
     protected InputStream getInputStream() {
+
         ByteArrayInputStream bais = new ByteArrayInputStream("Congratulations".getBytes(Charset.forName("utf-8")));
         return bais;
     }
