@@ -19,11 +19,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         Button recordBtn = (Button) findViewById(R.id.record_activity);
         Button selectBtn = (Button) findViewById(R.id.select_activity);
         Button audioBtn = (Button) findViewById(R.id.audio_activity);
-        recordBtn.setOnClickListener(this);
         recordBtn.getBackground().setAlpha(80);
-        selectBtn.setOnClickListener(this);
         selectBtn.getBackground().setAlpha(80);
-        audioBtn.setOnClickListener(this);
         audioBtn.getBackground().setAlpha(80);
         Typeface typeFace = Typeface.createFromAsset(getAssets(),"fonts/Pacifico-Regular.ttf");
         TextView txtshow=(TextView) findViewById(R.id.show);

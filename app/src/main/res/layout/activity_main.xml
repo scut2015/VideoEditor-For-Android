@@ -19,8 +19,7 @@
         android:text="B - l i n g"
         android:textColor="#ffffff"
         android:textSize="60dp"
-        android:textStyle="bold"
-        android:fontFamily=""/>
+        android:textStyle="bold"/>
 
     <Button
         android:id="@+id/record_activity"
