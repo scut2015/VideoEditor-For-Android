@@ -26,6 +26,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 /**
+ * Created by cj on 2017/7/25.
  * desc 视频录制
  * 主要包括 音视频录制、断点续录、对焦等功能
  */
