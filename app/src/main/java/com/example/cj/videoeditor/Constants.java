@@ -3,9 +3,16 @@ package com.example.cj.videoeditor;
 import android.content.Context;
 import android.os.Environment;
 import android.util.DisplayMetrics;
+import android.util.Log;
+import android.widget.Toast;
 
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
+
+import static com.example.cj.videoeditor.widget.FocusImageView.TAG;
 
 /**
  * Created by cj on 2017/6/26 .
@@ -13,6 +20,8 @@ import java.io.File;
  */
 
 public class Constants {
+    public static InputStream mInputStream;
+    public static String mfileName;
 
     public static String getBaseFolder() {
         String baseFolder = Environment.getExternalStorageDirectory() + "/Codec/";
@@ -27,11 +36,15 @@ public class Constants {
     }
     //获取VideoPath
     public static String getPath(String path, String fileName) {
+        FileInputStream fileInputStream;
         String p = getBaseFolder() + path;
         File f = new File(p);
         if (!f.exists() && !f.mkdirs()) {
             return getBaseFolder() + fileName;
         }
+        mfileName = p+fileName;
+
+
         return p + fileName;
     }
 }
