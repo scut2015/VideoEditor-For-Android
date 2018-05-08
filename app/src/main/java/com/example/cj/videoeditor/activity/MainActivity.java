@@ -17,8 +17,11 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         setContentView(R.layout.activity_main);
 
         Button recordBtn = (Button) findViewById(R.id.record_activity);
+        recordBtn.setOnClickListener(this);
         Button selectBtn = (Button) findViewById(R.id.select_activity);
+        selectBtn.setOnClickListener(this);
         Button audioBtn = (Button) findViewById(R.id.audio_activity);
+        audioBtn.setOnClickListener(this);
         recordBtn.getBackground().setAlpha(80);
         selectBtn.getBackground().setAlpha(80);
         audioBtn.getBackground().setAlpha(80);
