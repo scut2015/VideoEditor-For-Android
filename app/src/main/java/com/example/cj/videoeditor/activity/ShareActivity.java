@@ -1,5 +1,7 @@
 package com.example.cj.videoeditor.activity;
 
+import android.content.ClipboardManager;
+import android.content.Context;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Handler;
@@ -97,7 +99,10 @@ public class ShareActivity extends BaseActivity implements View.OnClickListener 
      * TODO 在这个方法中,让用户去复制url
      */
     protected void showUrlFolUserToCopy(String url) {
-        Toast.makeText(this, url, Toast.LENGTH_SHORT).show();
+        ClipboardManager cm = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+        // 将文本内容放到系统剪贴板里。
+        cm.setText(url);
+        Toast.makeText(this, "视频地址复制成功，请打开浏览器粘贴进行查看", Toast.LENGTH_SHORT).show();
     }
 
     @Override
