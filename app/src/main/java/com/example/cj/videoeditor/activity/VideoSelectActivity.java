@@ -27,7 +27,6 @@ import com.example.cj.videoeditor.adapter.VideoAdapter;
 import java.io.IOException;
 
 /**
- * Created by cj on 2017/10/16.
  * desc: local video select activity
  */
 
