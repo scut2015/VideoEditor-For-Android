@@ -17,13 +17,13 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         setContentView(R.layout.activity_main);
 
         Button recordBtn = (Button) findViewById(R.id.record_activity);
-        Button selectBtn = (Button) findViewById(R.id.select_activity);
-        Button audioBtn = (Button) findViewById(R.id.audio_activity);
         recordBtn.setOnClickListener(this);
-        recordBtn.getBackground().setAlpha(80);
+        Button selectBtn = (Button) findViewById(R.id.select_activity);
         selectBtn.setOnClickListener(this);
-        selectBtn.getBackground().setAlpha(80);
+        Button audioBtn = (Button) findViewById(R.id.audio_activity);
         audioBtn.setOnClickListener(this);
+        recordBtn.getBackground().setAlpha(80);
+        selectBtn.getBackground().setAlpha(80);
         audioBtn.getBackground().setAlpha(80);
         Typeface typeFace = Typeface.createFromAsset(getAssets(),"fonts/Pacifico-Regular.ttf");
         TextView txtshow=(TextView) findViewById(R.id.show);
