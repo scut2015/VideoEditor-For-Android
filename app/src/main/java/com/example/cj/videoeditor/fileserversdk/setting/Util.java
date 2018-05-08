@@ -1,5 +1,7 @@
 package com.example.cj.videoeditor.fileserversdk.setting;
 
+import android.util.Log;
+
 import com.example.cj.videoeditor.fileserversdk.data.FileDTO;
 import com.example.cj.videoeditor.fileserversdk.data.ResultDO;
 import com.google.gson.Gson;
@@ -89,8 +91,8 @@ public class Util {
         return fileDTOInfo;
     }
 
-    public static void copyFileDTO(FileDTO dest,FileDTO orig){
-        if (dest==null || orig==null) return;
+    public static void copyFileDTO(FileDTO dest, FileDTO orig) {
+        if (dest == null || orig == null) return;
         dest.setAccess_code(orig.getAccess_code());
         dest.setCreate_time(orig.getCreate_time());
         dest.setFile_name(orig.getFile_name());
@@ -99,8 +101,8 @@ public class Util {
         dest.setSize(orig.getSize());
     }
 
-    public static void copyResultDO(ResultDO dest,ResultDO orig){
-        if (dest==null || orig==null) return;
+    public static void copyResultDO(ResultDO dest, ResultDO orig) {
+        if (dest == null || orig == null) return;
         dest.setCode(orig.getCode());
         dest.setData(orig.getData());
         dest.setMessage(orig.getMessage());
@@ -117,7 +119,7 @@ public class Util {
 
     public static void log(String format, Object... args) {
         if (format == null) return;
-        System.out.println(String.format(format, args));
+        Log.d("kelles", String.format(format, args));
     }
 
     public static boolean isEmpty(Object str) {

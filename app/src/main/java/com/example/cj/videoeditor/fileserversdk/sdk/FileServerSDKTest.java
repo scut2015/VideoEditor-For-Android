@@ -6,8 +6,6 @@ import com.example.cj.videoeditor.fileserversdk.setting.Setting;
 import com.example.cj.videoeditor.fileserversdk.setting.Util;
 import com.google.gson.Gson;
 
-import junit.framework.Assert;
-
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -51,7 +49,7 @@ public class FileServerSDKTest {
         InputStream inputStream = null;
         try {
             ResultDO<FileDTO> resultDO = fileServerSDK.get(testId, testAccessCode);
-            Assert.assertTrue(resultDO.getSuccess() && resultDO.getData() != null && resultDO.getData().getInputStream() != null);
+            if (!(resultDO.getSuccess() && resultDO.getData() != null && resultDO.getData().getInputStream() != null)) return false;
             FileDTO fileDTO = resultDO.getData();
             inputStream = fileDTO.getInputStream();
             byte[] bytes = Util.inputStreamToBytes(fileDTO.getInputStream());
@@ -71,9 +69,9 @@ public class FileServerSDKTest {
         try {
             resultUpdate = fileServerSDK.update(testId, testAccessCode,
                     null, "hucci.txt", Util.bytesToInputStream("Hello, Hucci!".getBytes(Setting.DEFAULT_CHARSET)));
-            Assert.assertTrue(resultUpdate != null && resultUpdate.getSuccess());
+            if (!(resultUpdate != null && resultUpdate.getSuccess())) return false;
             resultGet = fileServerSDK.get(testId, testAccessCode);
-            Assert.assertTrue(resultGet != null && resultGet.getSuccess() && resultGet.getData() != null);
+            if (!(resultGet != null && resultGet.getSuccess() && resultGet.getData() != null)) return false;
             FileDTO fileDTO=resultGet.getData();
             return ("Hello, Hucci!".equals(new String(Util.inputStreamToBytes(fileDTO.getInputStream()), Setting.DEFAULT_CHARSET)));
         } finally {
