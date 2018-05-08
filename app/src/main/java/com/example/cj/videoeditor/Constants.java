@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.Environment;
 import android.util.DisplayMetrics;
 import android.util.Log;
+import android.widget.Toast;
 
 
 import java.io.File;
@@ -45,6 +46,7 @@ public class Constants {
             fileInputStream = new FileInputStream(p+fileName);
             mInputStream = fileInputStream;
             Log.d(TAG, "getPath: finish inputstream");
+
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
