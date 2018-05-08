@@ -15,7 +15,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        //设置button透明度
         Button recordBtn = (Button) findViewById(R.id.record_activity);
         recordBtn.setOnClickListener(this);
         Button selectBtn = (Button) findViewById(R.id.select_activity);
@@ -25,6 +25,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         recordBtn.getBackground().setAlpha(80);
         selectBtn.getBackground().setAlpha(80);
         audioBtn.getBackground().setAlpha(80);
+        //设置textview字体
         Typeface typeFace = Typeface.createFromAsset(getAssets(),"fonts/Pacifico-Regular.ttf");
         TextView txtshow=(TextView) findViewById(R.id.show);
         txtshow.setTypeface(typeFace);
