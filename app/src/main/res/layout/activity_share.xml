@@ -9,7 +9,7 @@
     tools:context="com.example.cj.videoeditor.activity.ShareActivity">
 
     <Button
-        android:id="@+id/btn_share2"
+        android:id="@+id/btn_share"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/show_share"
