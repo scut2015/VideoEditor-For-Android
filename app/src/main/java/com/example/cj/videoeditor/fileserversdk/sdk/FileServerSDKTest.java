@@ -23,7 +23,11 @@ public class FileServerSDKTest {
     String testContent = "Congratulations, you passed the test!";
 
     public boolean runTest() throws IOException {
-        return test1_Insert() && test2_Get() && test3_Update() && test4_Remove();
+        boolean test1=test1_Insert();
+        boolean test2=test2_Get();
+        boolean test3=test3_Update();
+        boolean test4=test4_Remove();
+        return test1 && test2 && test3 && test4;
     }
 
     public boolean test1_Insert() throws IOException {

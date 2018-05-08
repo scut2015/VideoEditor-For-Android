@@ -28,8 +28,8 @@ public class ShareActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_share);
-        Button button1 = (Button)findViewById(R.id.btn_share);
-        button1.setOnClickListener(new View.OnClickListener(){
+        Button buttonTest = (Button)findViewById(R.id.btn_test);
+        buttonTest.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
                 threadPool.execute(new Runnable() {
@@ -40,7 +40,7 @@ public class ShareActivity extends AppCompatActivity {
                                 handler.post(new Runnable() {
                                     @Override
                                     public void run() {
-                                        Toast.makeText(ShareActivity.this,"已复制到剪切板，请打开浏览器进行查看",
+                                        Toast.makeText(ShareActivity.this,"云服务器可用,点击分享按钮",
                                                 Toast.LENGTH_SHORT).show();
                                     }
                                 });
@@ -48,7 +48,7 @@ public class ShareActivity extends AppCompatActivity {
                                 handler.post(new Runnable() {
                                     @Override
                                     public void run() {
-                                        Toast.makeText(ShareActivity.this,"分享失败",
+                                        Toast.makeText(ShareActivity.this,"云服务器不可用",
                                                 Toast.LENGTH_SHORT).show();
                                     }
                                 });
