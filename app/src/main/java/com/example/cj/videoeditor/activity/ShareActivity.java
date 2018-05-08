@@ -44,12 +44,12 @@ public class ShareActivity extends BaseActivity implements View.OnClickListener 
 
         //设置textview字体
         setContentView(R.layout.activity_share);
-        Typeface typeFace = Typeface.createFromAsset(getAssets(),"fonts/Pacifico-Regular.ttf");
-        TextView txtshow=(TextView) findViewById(R.id.show_share);
+        Typeface typeFace = Typeface.createFromAsset(getAssets(), "fonts/Pacifico-Regular.ttf");
+        TextView txtshow = (TextView) findViewById(R.id.show_share);
         txtshow.setTypeface(typeFace);
 
         //分享按钮
-        Button buttonShare = (Button)findViewById(R.id.btn_share);
+        Button buttonShare = (Button) findViewById(R.id.btn_share);
         buttonShare.getBackground().setAlpha(80);
         buttonShare.setOnClickListener(this);
 
@@ -66,7 +66,7 @@ public class ShareActivity extends BaseActivity implements View.OnClickListener 
      */
     protected InputStream getInputStream() {
         FileInputStream fileInputStream;
-        InputStream mInputStream=null;
+        InputStream mInputStream = null;
         try {
             fileInputStream = new FileInputStream(Constants.mfileName);
             mInputStream = fileInputStream;
@@ -75,11 +75,9 @@ public class ShareActivity extends BaseActivity implements View.OnClickListener 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-        if(mInputStream!= null)
-        {
+        if (mInputStream != null) {
             return mInputStream;
-        }
-        else {
+        } else {
             Toast.makeText(this, "请先对视频加滤镜再分享", Toast.LENGTH_SHORT).show();
             return null;
         }
@@ -89,10 +87,15 @@ public class ShareActivity extends BaseActivity implements View.OnClickListener 
 
     /**
      * TODO 在这个方法中获取文件名
+     *
      * @return
      */
-    protected String getFileName(){
-        return Constants.mfileName;
+    protected String getFileName() {
+        String fileName = Constants.mfileName;
+        if (fileName != null && fileName.contains("/")) {
+            fileName = fileName.substring(fileName.lastIndexOf("/") + 1, fileName.length());
+        }
+        return fileName;
     }
 
     /**
@@ -114,7 +117,7 @@ public class ShareActivity extends BaseActivity implements View.OnClickListener 
                     @Override
                     public void run() {
                         InputStream inputStream = getInputStream();
-                        String fileName=getFileName();
+                        String fileName = getFileName();
                         try {
                             if (inputStream == null || Util.isEmpty(fileName)) {
                                 showToast("视频不存在");
