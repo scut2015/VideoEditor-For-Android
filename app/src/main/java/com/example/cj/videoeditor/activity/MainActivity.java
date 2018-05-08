@@ -34,8 +34,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.record_activity:
-//                startActivity(new Intent(MainActivity.this , RecordedActivity.class));
-                startActivity(new Intent(MainActivity.this , ShareActivity.class));
+                startActivity(new Intent(MainActivity.this , RecordedActivity.class));
                 break;
             case R.id.select_activity:
                 startActivity(new Intent(MainActivity.this , VideoSelectActivity.class));
