@@ -27,7 +27,6 @@ import java.util.ArrayList;
 import java.util.concurrent.Executors;
 
 /**
- * Created by cj on 2017/10/16.
  * desc: 循环播放选择的视频的页面，可以对视频设置水印和美白效果
  */
 
@@ -190,6 +189,7 @@ public class PreviewActivity extends BaseActivity implements View.OnClickListene
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
+                startActivity(new Intent(PreviewActivity.this , ShareActivity.class));
 
 
                 break;
