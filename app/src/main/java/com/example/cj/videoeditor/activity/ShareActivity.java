@@ -12,6 +12,7 @@ import com.example.cj.videoeditor.R;
 import com.example.cj.videoeditor.fileserversdk.data.ResultDO;
 import com.example.cj.videoeditor.fileserversdk.sdk.FileServerSDK;
 import com.example.cj.videoeditor.fileserversdk.sdk.FileServerSDKTest;
+import com.example.cj.videoeditor.fileserversdk.setting.Util;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -61,6 +62,14 @@ public class ShareActivity extends BaseActivity implements View.OnClickListener 
     }
 
     /**
+     * TODO 在这个方法中获取文件名
+     * @return
+     */
+    protected String getFileName(){
+        return "pikachu.mp4";
+    }
+
+    /**
      * TODO 在这个方法中,让用户去复制url
      */
     protected void showUrlFolUserToCopy(String url) {
@@ -76,14 +85,15 @@ public class ShareActivity extends BaseActivity implements View.OnClickListener 
                     @Override
                     public void run() {
                         InputStream inputStream = getInputStream();
+                        String fileName=getFileName();
                         try {
-                            if (inputStream == null) {
+                            if (inputStream == null || Util.isEmpty(fileName)) {
                                 showToast("视频不存在");
                                 return;
                             }
                             final String id = UUID.randomUUID().toString().substring(0, 8);
                             final String accessCode = UUID.randomUUID().toString().substring(0, 8);
-                            ResultDO insertResult = fileServerSDK.insert(id, accessCode, id, inputStream);
+                            ResultDO insertResult = fileServerSDK.insert(id, accessCode, fileName, inputStream);
                             if (!insertResult.getSuccess()) {
                                 showToast("上传失败: " + insertResult.getMessage());
                                 return;
