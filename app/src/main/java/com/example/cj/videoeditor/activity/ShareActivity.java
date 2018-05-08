@@ -53,7 +53,7 @@ public class ShareActivity extends AppCompatActivity {
                                     }
                                 });
                             }
-                        } catch (IOException e) {
+                        } catch (Exception e) {
                             e.printStackTrace();
                         }
                     }

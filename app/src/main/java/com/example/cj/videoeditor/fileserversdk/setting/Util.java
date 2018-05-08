@@ -4,10 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 import com.example.cj.videoeditor.fileserversdk.data.FileDTO;
 import com.example.cj.videoeditor.fileserversdk.data.ResultDO;
-import org.apache.commons.beanutils.BeanUtils;
-
 import java.io.*;
-import java.lang.reflect.InvocationTargetException;
 
 public class Util {
 
@@ -82,34 +79,36 @@ public class Util {
 
     public static FileDTO fileDTOInfo(FileDTO fileDTO) {
         if (fileDTO == null) return null;
-        try {
-            FileDTO fileDTOInfo = new FileDTO();
-            BeanUtils.copyProperties(fileDTOInfo, fileDTO);
-            fileDTOInfo.setInputStream(null);
-            return fileDTOInfo;
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-            return null;
-        } catch (InvocationTargetException e) {
-            e.printStackTrace();
-            return null;
-        }
+        FileDTO fileDTOInfo = new FileDTO();
+        Util.copyFileDTO(fileDTOInfo, fileDTO);
+        fileDTOInfo.setInputStream(null);
+        return fileDTOInfo;
+    }
+
+    public static void copyFileDTO(FileDTO dest,FileDTO orig){
+        if (dest==null || orig==null) return;
+        dest.setAccess_code(orig.getAccess_code());
+        dest.setCreate_time(orig.getCreate_time());
+        dest.setFile_name(orig.getFile_name());
+        dest.setId(orig.getId());
+        dest.setInputStream(orig.getInputStream());
+        dest.setSize(orig.getSize());
+    }
+
+    public static void copyResultDO(ResultDO dest,ResultDO orig){
+        if (dest==null || orig==null) return;
+        dest.setCode(orig.getCode());
+        dest.setData(orig.getData());
+        dest.setMessage(orig.getMessage());
+        dest.setSuccess(orig.getSuccess());
     }
 
     public static <T> ResultDO<T> resultDOInfo(ResultDO resultDO) {
         if (resultDO == null) return null;
-        try {
-            ResultDO<T> resultDOInfo = new ResultDO<>();
-            BeanUtils.copyProperties(resultDOInfo, resultDO);
-            resultDOInfo.setData(null);
-            return resultDOInfo;
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-            return null;
-        } catch (InvocationTargetException e) {
-            e.printStackTrace();
-            return null;
-        }
+        ResultDO<T> resultDOInfo = new ResultDO<>();
+        Util.copyResultDO(resultDOInfo, resultDO);
+        resultDOInfo.setData(null);
+        return resultDOInfo;
     }
 
     public static void log(String format, Object... args) {
