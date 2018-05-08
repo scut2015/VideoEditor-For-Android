@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.cj.videoeditor.Constants;
 import com.example.cj.videoeditor.R;
 import com.example.cj.videoeditor.fileserversdk.data.ResultDO;
 import com.example.cj.videoeditor.fileserversdk.sdk.FileServerSDK;
@@ -57,9 +58,16 @@ public class ShareActivity extends BaseActivity implements View.OnClickListener 
      * @return
      */
     protected InputStream getInputStream() {
-
-        ByteArrayInputStream bais = new ByteArrayInputStream("Congratulations".getBytes(Charset.forName("utf-8")));
-        return bais;
+        if(Constants.mInputStream!= null)
+        {
+            return Constants.mInputStream;
+        }
+        else {
+            Toast.makeText(this, "请先对视频加滤镜再分享", Toast.LENGTH_SHORT).show();
+            return null;
+        }
+        //ByteArrayInputStream bais = new ByteArrayInputStream("Congratulations".getBytes(Charset.forName("utf-8")));
+        //return bais;
     }
 
     /**
@@ -67,7 +75,7 @@ public class ShareActivity extends BaseActivity implements View.OnClickListener 
      * @return
      */
     protected String getFileName(){
-        return "pikachu.mp4";
+        return Constants.fileName;
     }
 
     /**
