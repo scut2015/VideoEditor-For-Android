@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.Environment;
 import android.util.DisplayMetrics;
 import android.util.Log;
+import android.widget.Toast;
 
 
 import java.io.File;
@@ -20,7 +21,7 @@ import static com.example.cj.videoeditor.widget.FocusImageView.TAG;
 
 public class Constants {
     public static InputStream mInputStream;
-    public static String fileName;
+    public static String mfileName;
 
     public static String getBaseFolder() {
         String baseFolder = Environment.getExternalStorageDirectory() + "/Codec/";
@@ -41,14 +42,9 @@ public class Constants {
         if (!f.exists() && !f.mkdirs()) {
             return getBaseFolder() + fileName;
         }
-        try {
-            fileInputStream = new FileInputStream(p+fileName);
-            mInputStream = fileInputStream;
-            Log.d(TAG, "getPath: finish inputstream");
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-        fileName = p+fileName;
+        mfileName = p+fileName;
+
+
         return p + fileName;
     }
 }
