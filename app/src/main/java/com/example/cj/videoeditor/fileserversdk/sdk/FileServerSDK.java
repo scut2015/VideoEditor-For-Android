@@ -59,13 +59,13 @@ public class FileServerSDK implements Closeable {
     }
 
     /**
-     * 获取get链接
+     * 获取displayFile链接
      * @param id
      * @param access_code
      * @return
      */
-    public String getUrl(String id,String access_code){
-        HttpUrl httpUrl = HttpUrl.parse(Setting.URL_BASIC + Setting.URL_GET).newBuilder()
+    public String getDisplay(String id, String access_code){
+        HttpUrl httpUrl = HttpUrl.parse(Setting.URL_DISPLAY).newBuilder()
                 .addQueryParameter("id", id)
                 .addQueryParameter("access_code", access_code)
                 .build();

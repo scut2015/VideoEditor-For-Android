@@ -91,7 +91,7 @@ public class ShareActivity extends BaseActivity implements View.OnClickListener 
                             handler.post(new Runnable() {
                                 @Override
                                 public void run() {
-                                    showUrlFolUserToCopy(fileServerSDK.getUrl(id, accessCode));
+                                    showUrlFolUserToCopy(fileServerSDK.getDisplay(id, accessCode));
                                 }
                             });
                         } finally {
