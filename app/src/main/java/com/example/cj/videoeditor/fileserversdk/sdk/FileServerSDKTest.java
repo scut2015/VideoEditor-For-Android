@@ -51,7 +51,7 @@ public class FileServerSDKTest {
         InputStream inputStream = null;
         try {
             ResultDO<FileDTO> resultDO = fileServerSDK.get(testId, testAccessCode);
-            Assert.assertTrue(resultDO.getSuccess() && resultDO.getData() != null && resultDO.getData().getInputStream() != null);
+            if (!(resultDO.getSuccess() && resultDO.getData() != null && resultDO.getData().getInputStream() != null)) return false;
             FileDTO fileDTO = resultDO.getData();
             inputStream = fileDTO.getInputStream();
             byte[] bytes = Util.inputStreamToBytes(fileDTO.getInputStream());
