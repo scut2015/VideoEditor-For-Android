@@ -51,6 +51,20 @@ public class FileServerSDK implements Closeable {
     }
 
     /**
+     * 获取get链接
+     * @param id
+     * @param access_code
+     * @return
+     */
+    public String getUrl(String id,String access_code){
+        HttpUrl httpUrl = HttpUrl.parse(Setting.URL_BASIC + Setting.URL_GET).newBuilder()
+                .addQueryParameter("id", id)
+                .addQueryParameter("access_code", access_code)
+                .build();
+        return httpUrl.toString();
+    }
+
+    /**
      * 不要忘记关闭FileDTO的InputStream
      *
      * @param id
